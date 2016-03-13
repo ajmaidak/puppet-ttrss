@@ -1,0 +1,12 @@
+[Unit]
+Description=ttrss update service
+After=syslog.target network.target remote-fs.target nss-lookup.target mysql.service postgresql.service
+
+[Service]
+Type=simple
+User=apache
+ExecStart=<%= $ttrss::document_root %>/update_daemon2.php
+ExecStop=/usr/bin/pkill update_daemon2.php
+
+[Install]
+WantedBy=multi-user.target

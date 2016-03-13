@@ -58,8 +58,8 @@ class { 'apache':
   mpm_module          => 'prefork',
 }
 
-apache::vhost { 'ttrss.mysite.info':
-  servername => 'ttrss.mysite.info',
+apache::vhost { 'www.my-ttrss-site.info':
+  servername => 'www.my-ttrss-site.info',
   port    => '80',
   docroot => '/var/www/html/ttrss',
 }
@@ -80,7 +80,7 @@ class { 'ttrss':
 ```
 
 After running this code you should have be able to create your config.php and 
-initialize your database by browsing to http://ttrss.mysite.info/install
+initialize your database by browsing to http://www.my-ttrss-site.info/install
 
 ## Limitations
 

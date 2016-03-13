@@ -41,9 +41,15 @@ keep your feeds up to date.
 
 ## Usage
 
-The module is intented to be used alongside modules such as puppetlabs-apache
-and puppetlabs-postgresql to setup those resources.  Here is a example 'profile'
-that could be used to setup ttrss:
+The module is intented to be used along side modules such as puppetlabs-apache
+and puppetlabs-postgresql to setup those resources.  
+
+The module has some code for setting up a config.php file for you.  Its not 
+very complete and is intended for use if you're going to import/export your own
+database rather then browse to the sites install folder to initialize a fresh 
+database.
+
+Here is a example 'profile' that could be used to setup ttrss:
 
 ```
 class { 'apache':
@@ -52,14 +58,8 @@ class { 'apache':
   mpm_module          => 'prefork',
 }
 
-apache::vhost { 'ttrss.maidak.info':
-  servername => 'ttrss.maidak.info',
-  port    => '80',
-  docroot => '/var/www/html/ttrss',
-}
-
-apache::vhost { 'ttrss.maidak.org':
-  servername => 'ttrss.maidak.org',
+apache::vhost { 'ttrss.mysite.info':
+  servername => 'ttrss.mysite.info',
   port    => '80',
   docroot => '/var/www/html/ttrss',
 }
@@ -78,6 +78,9 @@ class { 'ttrss':
   database_password => 'password'
 }
 ```
+
+After running this code you should have be able to create your config.php and 
+initialize your database by browsing to http://ttrss.mysite.info/install
 
 ## Limitations
 

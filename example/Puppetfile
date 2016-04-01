@@ -1,0 +1,10 @@
+forge "https://forgeapi.puppetlabs.com"
+mod 'puppetlabs/apache'
+mod 'puppetlabs/postgresql'
+mod 'puppetlabs/git'
+mod 'puppetlabs/vcsrepo'
+mod 'puppetlabs/firewall'
+mod 'jfryman/selinux'
+mod 'camptocamp/systemd'
+mod 'puppet-ttrss',
+  :git => 'git://github.com/ajmaidak/puppet-ttrss.git'

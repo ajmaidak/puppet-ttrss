@@ -1,4 +1,4 @@
-# ttrss
+# puppet-ttrss
 
 #### Table of Contents
 

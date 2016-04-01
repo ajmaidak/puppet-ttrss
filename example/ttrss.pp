@@ -1,8 +1,12 @@
 #
-# an example profile for which can be used to setup ttrss
+# An example profile for which can be used to setup ttrss
 # run with puppet apply ttrss.pp, before running this you
-# can use librian-puppet or r10k to download the deps in
-# the puppet file
+# can use librarian-puppet or r10k to download the deps in
+# the puppet file.
+# 
+# gem install librarian-puppet
+# librarian-puppet install --path /etc/puppet/modules
+# puppet apply ttrss.pp
 #
 class { 'apache':
   default_mods        => false,

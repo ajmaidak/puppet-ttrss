@@ -23,10 +23,10 @@ your webserver or database.
 ## Setup
 
 This module requires:
- puppet 4.x
- camptocamp-systemd
- puppetlabs-vcsrepo
- puppetlabs-git
+* puppet 4.x
+* camptocamp-systemd
+* puppetlabs-vcsrepo
+* puppetlabs-git
 
 The module has only been tested on Fedora Core 23 and uses puppet 4.x language features
 
@@ -49,38 +49,14 @@ very complete and is intended for use if you're going to import/export your own
 database rather then browse to the sites install folder to initialize a fresh 
 database.
 
-Here is a example 'profile' that could be used to setup ttrss:
+You can see an example "profile" you might use with this module example folder.
 
+```shell
+cd example
+gem install librarian-puppet 
+librarian-puppet install --path /etc/puppet/modules
+puppet apply -t ttrss.pp
 ```
-class { 'apache':
-  default_mods        => false,
-  default_confd_files => false,
-  mpm_module          => 'prefork',
-}
-
-apache::vhost { 'www.my-ttrss-site.info':
-  servername => 'www.my-ttrss-site.info',
-  port    => '80',
-  docroot => '/var/www/html/ttrss',
-}
-
-include apache::mod::php
-
-class { 'postgresql::server': }
-
-postgresql::server::db { 'ttrss':
-  user     => 'ttrss',
-  password => postgresql_password('ttrss', 'password'),
-}
-
-class { 'ttrss':
-  document_root     => '/var/www/html/ttrss',
-  database_password => 'password'
-}
-```
-
-After running this code you should have be able to create your config.php and 
-initialize your database by browsing to http://www.my-ttrss-site.info/install
 
 ## Limitations
 

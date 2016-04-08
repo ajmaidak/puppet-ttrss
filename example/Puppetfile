@@ -1,6 +1,11 @@
 forge "https://forgeapi.puppetlabs.com"
 mod 'puppetlabs/apache'
-mod 'puppetlabs/postgresql'
+# puppetlabs-postgresql needs to add support for fedora 23 :)
+# mod 'puppetlabs/postgresql'
+#
+mod 'puppetlabs/postgresql',
+  :git => 'git://github.com/ajmaidak/puppetlabs-postgresql.git',
+  :ref => 'fedora23'
 mod 'puppetlabs/git'
 mod 'puppetlabs/vcsrepo'
 mod 'puppetlabs/firewall'

@@ -53,6 +53,9 @@
 # If set to true this will create a systemd service for the update_daemon2.php 
 # updater to update your feeds automatically
 #
+# * `write_enable_docroot`
+# Allow the webserver to write to the document root for saving config.php 
+# 
 #
 # Variables
 # ----------
@@ -82,15 +85,17 @@ class ttrss (
   $git_repo              = 'https://tt-rss.org/git/tt-rss.git',
   $git_revision          = 'master',
   $git_update            = 'latest',
+  $setup_config          = false,
   $enable_update_service = true,
   $database_type         = 'pgsql',
-  $setup_config          = false,
   $database_name         = 'ttrss',
   $database_user         = 'ttrss',
   $database_password     = 'password',
   $database_server       = 'localhost',
   $database_port         = '5432',
-  $ttrss_url             = 'http://www.my-ttrss-site.info'
+  $ttrss_url             = 'http://www.my-ttrss-site.info',
+  $write_enable_docroot  = false,
+  $webserver_user        = $::ttrss::params::webserver_user
 ) inherits ttrss::params {
   contain ttrss::install
   contain ttrss::config

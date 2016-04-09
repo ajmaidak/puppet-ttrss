@@ -10,6 +10,7 @@ class ttrss::params {
         }
         default: { fail("operatingsystem ${::operatingsystem} is not supported") }
       }
+      $webserver_user = 'apache'
     }
     default: { fail("osfamily ${::osfamily} is not supported") }
   }

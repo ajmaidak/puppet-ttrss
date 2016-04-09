@@ -27,8 +27,17 @@ class ttrss::install {
           "${ttrss::document_root}/feed-icons",
           "${ttrss::document_root}/lock"]:
     ensure  => 'directory',
-    owner   => 'apache',
+    owner   => $ttrss::webserver_user,
     mode    => '0755',
     require => Vcsrepo[$ttrss::document_root]
+  }
+
+  if($ttrss::write_enable_docroot) {
+    file { $ttrss::document_root:
+      ensure => 'directory',
+      owner   => $ttrss::webserver_user,
+      mode   => '0755',
+      require => Vcsrepo[$ttrss::document_root]
+    }
   }
 }

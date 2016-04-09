@@ -28,15 +28,17 @@ class ttrss::install {
           "${ttrss::document_root}/lock"]:
     ensure  => 'directory',
     owner   => $ttrss::webserver_user,
+    seltype => 'httpd_sys_rw_content_t',
     mode    => '0755',
     require => Vcsrepo[$ttrss::document_root]
   }
 
   if($ttrss::write_enable_docroot) {
     file { $ttrss::document_root:
-      ensure => 'directory',
+      ensure  => 'directory',
       owner   => $ttrss::webserver_user,
-      mode   => '0755',
+      mode    => '0755',
+      seltype => 'httpd_sys_rw_content_t',
       require => Vcsrepo[$ttrss::document_root]
     }
   }

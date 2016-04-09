@@ -16,14 +16,14 @@ class { 'apache':
 
 apache::vhost { 'ttrss.maidak.info':
   servername => 'ttrss.maidak.info',
-  port    => '80',
-  docroot => '/var/www/html/ttrss',
+  port       => '80',
+  docroot    => '/var/www/html/ttrss',
 }
 
 apache::vhost { 'ttrss.maidak.org':
   servername => 'ttrss.maidak.org',
-  port    => '80',
-  docroot => '/var/www/html/ttrss',
+  port       => '80',
+  docroot    => '/var/www/html/ttrss',
 }
 
 include apache::mod::php
@@ -36,17 +36,17 @@ postgresql::server::db { 'ttrss':
 }
 
 class { 'ttrss':
-  database_password => 'password',
+  database_password    => 'password',
   write_enable_docroot => true
 }
 
 firewall { '100 allow http and https access':
-  dport   => [80, 443],
+  dport  => [80, 443],
   proto  => tcp,
   action => accept,
 }
 
-selinux::boolean { 'httpd_can_network_connect_db': 
+selinux::boolean { 'httpd_can_network_connect_db':
   ensure     => 'on',
   persistent => true
 }

@@ -36,7 +36,8 @@ postgresql::server::db { 'ttrss':
 }
 
 class { 'ttrss':
-  database_password => 'password'
+  database_password => 'password',
+  write_enable_docroot => true
 }
 
 firewall { '100 allow http and https access':

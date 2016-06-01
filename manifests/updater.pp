@@ -9,8 +9,8 @@ class ttrss::updater {
 
     include ::systemd
 
-    if $::systemd_available == 'true' {
-      file { "{::systemd::params::unit_path}/ttrss-update.service":
+    if ( str2bool($::systemd_available) ) {
+      file { "${::systemd::params::unit_path}/ttrss-update.service":
         owner   => 'root',
         group   => 'root',
         mode    => '0644',

@@ -9,13 +9,18 @@ class ttrss::updater {
 
     include ::systemd
 
-    file { '/usr/lib/systemd/system/ttrss-update.service':
-      ensure  => file,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      content => epp('ttrss/ttrss-update.epp'),
-    } ~>
-    Exec['systemctl-daemon-reload']
+    if $::systemd_available == 'true' {
+      file { "{::systemd::params::unit_path}/ttrss-update.service":
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        content => epp('ttrss/ttrss-update.epp'),
+        before  => Service['ttrss-update'],
+        notify  => Exec['systemd-daemon-reload'],
+      }
+    }
+    service { 'ttrss-update':
+      ensure => 'running',
+    }
   }
 }

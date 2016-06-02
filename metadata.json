@@ -7,6 +7,12 @@
   "source": "https://github.com/ajmaidak/puppet-ttrss",
   "project_page": "https://github.com/ajmaidak/puppet-ttrss",
   "issues_url": "https://github.com/ajmaidak/puppet-ttrss/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [ "22", "23" ]
+     }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",

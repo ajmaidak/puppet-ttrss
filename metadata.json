@@ -1,6 +1,6 @@
 {
   "name": "ajmaidak-ttrss",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "ajmaidak",
   "summary": "This module is used to install ttrss",
   "license": "Apache-2.0",
@@ -10,8 +10,11 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "Fedora",
-      "operatingsystemrelease": [ "22", "23" ]
-     }
+      "operatingsystemrelease": [
+        "22",
+        "23"
+      ]
+    }
   ],
   "dependencies": [
     {

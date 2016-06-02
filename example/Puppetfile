@@ -10,6 +10,6 @@ mod 'puppetlabs/git'
 mod 'puppetlabs/vcsrepo'
 mod 'puppetlabs/firewall'
 mod 'jfryman/selinux'
-mod 'camptocamp/systemd'
+mod 'justin8/systemd'
 mod 'puppet-ttrss',
   :git => 'git://github.com/ajmaidak/puppet-ttrss.git'

@@ -7,18 +7,21 @@ class ttrss::updater {
       ensure => present
     }
 
-    include ::systemd
-
-    if ( str2bool($::systemd_available) ) {
-      file { "${::systemd::params::unit_path}/ttrss-update.service":
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
-        content => epp('ttrss/ttrss-update.epp'),
-        before  => Service['ttrss-update'],
-        notify  => Exec['systemd-daemon-reload'],
-      }
+    file { "${::ttrss::params::systemd_unit_path}/ttrss-update.service":
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => epp('ttrss/ttrss-update.epp'),
+      before  => Service['ttrss-update'],
     }
+
+    exec { 'systemctl-daemon-reload':
+      path        => '/bin:/sbin:/usr/bin:/usr/sbin',
+      command     => 'systemctl daemon-reload',
+      subscribe   => File["${::ttrss::params::systemd_unit_path}/ttrss-update.service"],
+      refreshonly => true,
+    }
+
     service { 'ttrss-update':
       ensure => 'running',
     }

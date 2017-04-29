@@ -3,6 +3,5 @@ fixtures:
     stdlib: "http://github.com/puppetlabs/puppetlabs-stdlib.git"
     vcsrepo: "http://github.com/puppetlabs/puppetlabs-vcsrepo.git"
     git: "http://github.com/puppetlabs/puppetlabs-git.git"
-    systemd: "http://github.com/justin8/justin8-systemd.git"
   symlinks:
     "ttrss": "#{source_dir}"

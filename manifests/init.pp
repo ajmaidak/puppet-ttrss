@@ -82,7 +82,7 @@
 #
 class ttrss (
   $document_root         = '/var/www/html/ttrss',
-  $git_repo              = 'https://tt-rss.org/git/tt-rss.git',
+  $git_repo              = 'https://tt-rss.org/fox/tt-rss.git',
   $git_revision          = 'master',
   $git_update            = 'latest',
   $setup_config          = false,

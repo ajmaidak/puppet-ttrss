@@ -26,18 +26,23 @@ apache::vhost { 'ttrss.maidak.org':
   docroot    => '/var/www/html/ttrss',
 }
 
-include apache::mod::php
+class { 'apache::mod::php':
+  php_version  => '7',
+}
 
 class { 'postgresql::server': }
 
-postgresql::server::db { 'ttrss':
-  user     => 'ttrss',
-  password => postgresql_password('ttrss', 'password'),
+postgresql::server::db { 'ttrss_db':
+  user     => 'ttrss_user',
+  password => postgresql_password('ttrss_user', 'password'),
 }
 
 class { 'ttrss':
-  database_password    => 'password',
-  write_enable_docroot => true
+  database_password     => 'password',
+  database_name         => 'ttrss_db',
+  database_user         => 'ttrss_user',
+  
+  write_enable_docroot  => true,
 }
 
 firewall { '100 allow http and https access':

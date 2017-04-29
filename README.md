@@ -24,7 +24,6 @@ your webserver or database. See the example folder for usage in a profile.
 
 This module requires:
 * puppet 4.x
-* justin8-systemd
 * puppetlabs-vcsrepo
 * puppetlabs-git
 

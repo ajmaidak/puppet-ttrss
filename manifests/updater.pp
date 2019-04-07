@@ -1,7 +1,7 @@
 #
 # enables the update_daemon2.php as a systemd service
 #
-class ttrss::updater {
+class ttrss::updater inherits ttrss {
   if($ttrss::enable_update_service) {
     package { $ttrss::updater_php_extensions:
       ensure => present

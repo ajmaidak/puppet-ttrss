@@ -101,7 +101,5 @@ class ttrss (
   contain ttrss::config
   contain ttrss::updater
 
-  Class['ttrss::install'] ->
-  Class['ttrss::config'] ->
-  Class['ttrss::updater']
+  Class['ttrss::install'] -> Class['ttrss::config'] -> Class['ttrss::updater']
 }

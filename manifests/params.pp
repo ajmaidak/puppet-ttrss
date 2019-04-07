@@ -17,6 +17,8 @@ class ttrss::params {
       $database_package_name = { 'pgsql' =>  'php7.0-pgsql', 'mysql' => 'php7.0-mysql' }
       $php_extensions = ['php-mbstring', 'zendframework', 'php7.0-intl']
       $updater_php_extensions = 'php-symfony-process'
+      $systemd_unit_path = '/etc/systemd/system'
+      $webserver_user = 'www-data'
     }
     default: { fail("osfamily ${::osfamily} is not supported") }
   }

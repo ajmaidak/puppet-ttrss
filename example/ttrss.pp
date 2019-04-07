@@ -38,11 +38,10 @@ postgresql::server::db { 'ttrss_db':
 }
 
 class { 'ttrss':
-  database_password     => 'password',
-  database_name         => 'ttrss_db',
-  database_user         => 'ttrss_user',
-  
-  write_enable_docroot  => true,
+  database_password    => 'password',
+  database_name        => 'ttrss_db',
+  database_user        => 'ttrss_user',
+  write_enable_docroot => true,
 }
 
 firewall { '100 allow http and https access':

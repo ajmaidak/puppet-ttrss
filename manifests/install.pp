@@ -2,7 +2,7 @@
 # Installs ttrss using vcsrepo/git
 #
 class ttrss::install {
-    
+
   include 'git'
 
   vcsrepo { $ttrss::document_root:
@@ -11,7 +11,7 @@ class ttrss::install {
     source   => $ttrss::git_repo,
     revision => $ttrss::git_revision
   }
-  
+
   package { $ttrss::database_package_name[$ttrss::database_type]:
     ensure => present
   }
